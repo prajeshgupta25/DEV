@@ -26,18 +26,24 @@ for(let i=0 ; i<files.length ; i++){
 // -s flag
 
 function applySFlag(){
-  let datacomp = data.split("\r\n");
-  console.log(datacomp);
-  let sFlagedData = [];
-  let emptyPushed = false;
-  for(let i=0 ; i<datacomp.length; i++){
-    if(datacomp[i] != ""){
-      sFlagedData.push(dataComp[i]);
+    let dataComp = data.split("\r\n");
+    // console.log(dataComp);
+    let sFlagedData = [];
+    let nonEmptyFound = false;
+    
+    for(let i=0 ; i<dataComp.length ; i++){
+        if(dataComp[i] != '' ){
+            sFlagedData.push(dataComp[i]);
+            nonEmptyFound = true;
+        }
+        else if(dataComp[i] == '' && dataComp[i-1] != '' && nonEmptyFound){
+            sFlagedData.push(dataComp[i]);
+        }
     }
-    else if(datacomp[i] == '' && !emptyPushed) {
-      sFlagedData.push(datacomp[i]); I
-      emptypushed = true;
-    }
+    let sFlagedString = sFlagedData.join("\r\n");
+    return sFlagedString;
 }
 
-applySFlag();
+data = applySFlag();
+
+console.log(data);
