@@ -25,25 +25,44 @@ for(let i=0 ; i<files.length ; i++){
 
 // -s flag
 
-function applySFlag(){
-    let dataComp = data.split("\r\n");
-    // console.log(dataComp);
-    let sFlagedData = [];
-    let nonEmptyFound = false;
+// function applySFlag(){
+//     let dataComp = data.split("\r\n");
+//     // console.log(dataComp);
+//     let sFlagedData = [];
+//     let nonEmptyFound = false;
     
-    for(let i=0 ; i<dataComp.length ; i++){
-        if(dataComp[i] != '' ){
-            sFlagedData.push(dataComp[i]);
-            nonEmptyFound = true;
-        }
-        else if(dataComp[i] == '' && dataComp[i-1] != '' && nonEmptyFound){
-            sFlagedData.push(dataComp[i]);
-        }
-    }
-    let sFlagedString = sFlagedData.join("\r\n");
-    return sFlagedString;
+//     for(let i=0 ; i<dataComp.length ; i++){
+//         if(dataComp[i] != '' ){
+//             sFlagedData.push(dataComp[i]);
+//             nonEmptyFound = true;
+//         }
+//         else if(dataComp[i] == '' && dataComp[i-1] != '' && nonEmptyFound){
+//             sFlagedData.push(dataComp[i]);
+//         }
+//     }
+//     let sFlagedString = sFlagedData.join("\r\n");
+//     return sFlagedString;
+// }
+
+// data = applySFlag();
+
+// console.log(data);
+
+//n flag
+function applyNFlag(){
+  let dataComp = data.split("\r\n");
+  // console.log(dataComp);
+  let nFlagedData = [];
+  let num = 1;
+  console.log(dataComp);
+  for(let i=0 ; i<dataComp.length ; i++){
+    nFlagedData.push(i+1 + "." + dataComp[i]);
+  }
+  let nFlagedString = nFlagedData.join("\r\n");
+  return nFlagedString;
 }
 
-data = applySFlag();
 
-console.log(data);
+applyNFlag();
+
+// console.log(data);
