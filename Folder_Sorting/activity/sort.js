@@ -1,47 +1,41 @@
 let fs = require("fs");
 let extensions = require("./extensions");
 
-let testFolderPath = "./testFolder";
+let testfolderpath = "./testfolder";
 
-// fs function which gives content of a directory
-let contents = fs.readdirSync(testFolderPath);
-// console.log(contents);
+let content = fs.readdirSync(testfolderpath);
 
-for (let i = 0; i < contents.length; i++) {
-    let file = contents[i];
-    sortFile(file);
+// console.log(content);
+
+for(let i=0; i<content.length; i++){
+   let file = content[i];
+   testsort(file);
 }
 
-function sortFile(file){
-    let ext = file.split(".")[1];
-    let folderName = getFolderName(ext);
-    // console.log(ext , folderName);
-    let folderPath = testFolderPath+"/"+folderName;
-    if( !fs.existsSync(folderPath) ){
-        // folder doenst exists
-        // create folder
-        fs.mkdirSync(folderPath);
-    }   
-    // move file
-    // copy file
-    let sourceFilePath = testFolderPath + "/" + file;
-    let destFilePath = folderPath + "/" + file;
-    fs.copyFileSync( sourceFilePath  , destFilePath );
-    // delete file
-    fs.unlinkSync(sourceFilePath);
+function testsort(file){
+   let ext = file.split(".")[1];
+   let foldername = getfoldername(ext);
+   // console.log(ext , foldername);
+   let folderpath = testfolderpath + "/" + foldername;
+   if(!fs.existsSync(folderpath)){
+      fs.mkdirSync(folderpath);
+   }
+   // move file
+   // copy file
+   let sourcefilepath = testfolderpath + "/" + file;
+   let destfilepath = folderpath + "/" + file;
+   fs.copyFileSync( sourcefilepath  , destfilepath );
+   // delete file
+   fs.unlinkSync(sourcefilepath);
 }
 
-function getFolderName(ext){
-    // ext = "jpg"
-    let folderName;
-    for( let key in extensions ){
-        if( extensions[key].includes(ext)){
-            folderName = key;
-            return folderName;
-        } 
-    }
-}
+function getfoldername(ext){
+   let foldername;
 
-// Task
-// 1. Think of Recursive code
-// 2. If you are inside a sorted folder then come back dont sort
+   for(let key in extensions){
+      if(extensions[key].includes(ext)){
+         foldername = key;
+         return foldername;
+      }
+   }
+}
