@@ -26,4 +26,4 @@ function callMe( fullName , fun ){
 
 
 callMe("Steve Rogers" , getFirstName);
-callMe("TOny Stark" , getLastName);
+callMe("Tony Stark" , getLastName);
